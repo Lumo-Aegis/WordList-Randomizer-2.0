@@ -1,6 +1,6 @@
 # WORD LIST RANDOMIZER
 
-The Word List Randomizer is a tool designed to randomly select words or lines from a text file, originally created to aid in studying Japanese. You can freely use or modify this program as needed.
+The Word List Randomizer is a tool designed to randomly select words or lines from a text file, originally created to aid me when studying Japanese. You can freely use or modify this program as needed.
 
 This program allows you to choose a file (preferably .txt) from the directory where the program is located and retrieve lines from it at random. Comments in the file are ignored by the program.
 
@@ -65,7 +65,6 @@ Run the following command to compile:
 
 ```
 make windows
-
 ```
 
 #### Cleaning Compilation Files
@@ -74,7 +73,6 @@ To clean up compilation files, use:
 
 ```
 make clean
-
 ```
 
 ## File Structure and Format
