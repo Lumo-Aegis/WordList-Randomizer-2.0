@@ -1,4 +1,4 @@
-# WORD LIST RANDOMIZER
+# WORD LIST RANDOMIZER 2.0
 
 The Word List Randomizer is a tool designed to randomly select words or lines from a text file, originally created to aid me when studying Japanese. You can freely use or modify this program as needed.
 
