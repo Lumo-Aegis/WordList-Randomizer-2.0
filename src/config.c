@@ -25,6 +25,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include "headers/config.h"
 #include "headers/input.h"
 #include "headers/clear.h"
@@ -32,10 +34,31 @@
 Config userconfig;
 FILE* configFile;
 char line[100];
+char config_path[1024];
+
 
 bool verify_config(){
 
-    if((configFile = fopen("config", "r")) == NULL){
+    
+    const char *home_path = getenv("HOME");
+    char config_dir[1024];
+
+    snprintf(config_dir, sizeof(config_dir), "%s/.config/wl-randomizer", home_path);
+
+    struct stat st= {0};
+
+    if(stat(config_dir, &st) == -1){
+
+        if(mkdir(config_dir, 0700) == -1){
+            printf("ERROR 05.1: Couldn't create config folder in %s", config_dir);
+            exit(1);
+        }
+    }
+
+
+    snprintf(config_path, sizeof(config_path), "%s/.config/wl-randomizer/config", home_path);
+
+    if((configFile = fopen(config_path, "r")) == NULL){
         return false;
     }
 
@@ -129,7 +152,7 @@ void create_config(){
     }while(!(input_accepted(answer)));
 
 
-    if((configFile = fopen("config", "w")) == NULL){
+    if((configFile = fopen(config_path, "w")) == NULL){
         printf("ERROR 04: Coudn't create/open the config file!\n");
         exit(1);
     }
